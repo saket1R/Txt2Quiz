@@ -1,0 +1,24 @@
+# Ignore virtual environment
+venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables and secrets
+.env
+*.env
+.streamlit/secrets.toml
+
+# Logs
+*.log
+
+# Jupyter Notebooks Checkpoints
+.ipynb_checkpoints
+
+# macOS
+.DS_Store
+
+# VSCode settings
+.vscode/
