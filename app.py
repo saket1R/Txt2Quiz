@@ -90,7 +90,7 @@ Answer: B
 """
 
     data = {
-        "model": "model_choice",
+        "model": model_choice,
         "messages": [
             {
                 "role": "system",
