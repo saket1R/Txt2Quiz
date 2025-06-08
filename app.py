@@ -8,7 +8,13 @@ st.title(" Text2Quiz Generator  ( SAVE YOUR MONEY FROM USELESS TEST SERIES )")
 # --- User API Key ---
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
-
+# --- Model Selection ---
+model_map = {
+    "Mixtral (8x7B - Better reasoning)": "mixtral-8x7b-32768",
+    "LLaMA 3.1 8B (Fast)": "llama3-8b-8192"
+}
+model_label = st.selectbox(" Choose model:", list(model_map.keys()))
+model_choice = model_map[model_label]
 # --- User Input ---
 option = st.radio(
     "Choose input method:",
@@ -29,7 +35,7 @@ elif option == "Enter custom text manually":
 
 
 # --- Function to generate quiz ---
-def generate_quiz(user_input):
+def generate_quiz(user_input, model_choice):
     import requests
 
     url = "https://api.groq.com/openai/v1/chat/completions"
@@ -115,7 +121,7 @@ if st.button(" Generate Quiz"):
         st.warning(" Please upload a file or enter text.")
     else:
         with st.spinner(" Generating quiz..."):
-            quiz = generate_quiz(content)
+            quiz = generate_quiz(content, model_choice)  
             st.success(" Quiz generated successfully!")
             st.markdown(" Quiz Output")
             st.code(quiz)
@@ -123,4 +129,4 @@ if st.button(" Generate Quiz"):
 
 # --- Footer ---
 st.markdown("---")
-st.markdown("Made with using [LLaMA 3.1-8B Instant via Groq](https://console.groq.com)")
+st.markdown("Made with using [LLaMA 3.1-8B Instant/mixtral-8x7b-32768 via Groq](https://console.groq.com)")
