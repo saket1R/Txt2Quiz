@@ -10,7 +10,8 @@ GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 
 # --- Model Selection ---
 model_map = {
-    "Mixtral (8x7B - Better reasoning)": "mixtral-8x7b-32768",
+    "Mistral (24b - Better reasoning)":  "mistral-saba-24b",
+
     "LLaMA 3.1 8B (Fast)": "llama3-8b-8192"
 }
 model_label = st.selectbox(" Choose model:", list(model_map.keys()))
@@ -89,7 +90,7 @@ Answer: B
 """
 
     data = {
-        "model": "mixtral-8x7b-32768",
+        "model": "model_choice",
         "messages": [
             {
                 "role": "system",
@@ -129,4 +130,4 @@ if st.button(" Generate Quiz"):
 
 # --- Footer ---
 st.markdown("---")
-st.markdown("Made with using [LLaMA 3.1-8B Instant/mixtral-8x7b-32768 via Groq](https://console.groq.com)")
+st.markdown("Made with using [LLaMA 3.1-8B Instant/mistral-saba-24b via Groq](https://console.groq.com)")
